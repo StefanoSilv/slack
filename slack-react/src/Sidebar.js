@@ -1,17 +1,24 @@
 import React, {Component} from 'react';
 import './Sidebar.css';
+import Channel from './Channel.js'
 
 class Sidebar extends Component {
-  render(){
+	state = {
+	workspace: 'Tortuga Coders',
+	channels:[{id:1,name:'programming'},{id:2,name:'general'}]
+	}
+
+	render(){
 		return(
 			<div id="sidebar">
-				<h2>Tortuga Coders</h2>
+				<h2>{this.state.workspace}</h2>
 				<ul className="list-unstyled">
 					<li className="active">Threads</li>
-					<li>Channels</li>
-					<li>Add a channel</li>
-					<li>Direct messages</li>
-					<li>Apps</li>
+					{
+						this.state.channels.map((c) => {
+							return <Channel />
+						})
+					}
 				</ul>
 			</div>
 		)
