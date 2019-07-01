@@ -9,4 +9,24 @@
 	padding: 5%;
 	height: calc(100vh - 80px);
 }
+
+#messages .author{
+	font-weight: 700;
+	margin-right: 2%;
+}
+
+#messages .date{
+	font-size: 14px;
+}
+
+#messages .message{
+	margin-top: 3%;
+	border: 1px solid rgb(212, 212, 212);
+	border-radius: 5px;
+	padding: 2%;
+	margin-bottom: 3%;
+}
+
+.mb-3{
+	padding: 2%;
 }
