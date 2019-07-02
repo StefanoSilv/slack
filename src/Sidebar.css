@@ -1,0 +1,25 @@
+#sidebar{
+	padding: 15%;
+	background-color: rgb(132, 29, 213);
+	color: white;
+	height:100vh;
+	overflow-y: auto;
+}
+
+#sidebar h2{
+	font-size: 16px;
+	margin-bottom: 60px;
+}
+
+#sidebar li{
+	padding:10px;
+	cursor: pointer;
+}
+
+#sidebar li.active {
+	background-color: rgb(219, 169, 19);
+}
+
+#sidebar li:hover{
+	background-color: black;
+}
