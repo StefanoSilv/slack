@@ -23,13 +23,20 @@ class Content extends Component {
 				date: '19th July 2019',
 				body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 			}
-		],
-		text:'Hello'
+		]
 	}
 
-	createMessage = (e) => {
+	createMessage = (e, text) => {
 		e.preventDefault()
-		console.log('Hello');
+		let message = {
+			id: 7,
+			author: 'Tony Russo',
+			date: '3 July 2019 - 9:42 AM',
+			body: text
+		}
+		let messages = this.state.messages
+		messages.push(message)
+		this.setState({messages})
 	}
 
 	changeText = (e) => {
@@ -48,7 +55,7 @@ class Content extends Component {
 					})
 				}
 				</div>
-				< Newmessage text={this.state.text} createMessage={this.createMessage} changeText={this.changeText}/>
+				< Newmessage text={this.state.text} createMessage={this.createMessage} changeText={this.changeText} pushMessage={this.pushMessage}/>
 			</div>
 		)
 	}
