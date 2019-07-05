@@ -25,7 +25,9 @@ state = {
 				}>
 
 					<div className="input-group">
-						<input type="text" className="form-control" value={this.state.text} placeholder="Insert your messages"
+						<input type="text" className="form-control"
+						value={this.state.text} 
+						placeholder="Insert your messages"
 						onChange={(e) => this.changeText(e)} />
 						<div className="input-group-append">
 							<button className="btn btn-outline-secondary" type="submit" id="button-addon2">Send</button>

@@ -1,45 +1,31 @@
 import React, {Component} from 'react';
 import './Sidebar.css';
 import Channel from './Channel.js'
+import axios from 'axios'
 
 class Sidebar extends Component {
 	state = {
 	workspace: 'Tortuga Coders',
-	channels:[
-		{
-			id:1,
-			name:'programming'
-		},
-		{
-			id:2,
-			name:'general'
-		},
-		{
-			id:3,
-			name:'branch 2'
-		},
-		{
-			id:4,
-			name:'fun'
-		},
-		{
-			id:5,
-			name:'threads'
-		}
-	]
+	channels:[]
 	}
-
+	componentWillMount(){
+		axios.get('http://localhost:4000/api/channels').then((res) => {
+			console.log('res.data' , res.data)
+			this.setState({
+					channels: res.data
+			})
+		}).catch((err) =>{
+			console.log(err);
+		})
+	}
+	
 	selectChannel = (id) => {
 		let channels = this.state.channels
 		channels.forEach( (c) => delete c.active)
-		let channel = channels.find( (c) => c.id === id )
+		let channel = channels.find( (c) => c._id === id )
 		channel.active = true
 		this.setState({channels})
-		console.log(this.state.channels);
-	}
-
-	logHello = () => {
-		console.log('Hello');
+		this.props.getMessages(id)
 	}
 
 	render(){
@@ -49,7 +35,9 @@ class Sidebar extends Component {
 				<ul className="list-unstyled">
 					{
 						this.state.channels.map( (c) => {
-							return <Channel logHello={this.logHello} channel={c} key={c.id} selectChannel={this.selectChannel}/>
+							return <Channel channel={c} key={c._id}
+							selectChannel={this.selectChannel}
+							/>
 						})
 					}
 				</ul>
